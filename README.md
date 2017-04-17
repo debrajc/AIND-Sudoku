@@ -3,11 +3,20 @@
 
 # Question 1 (Naked Twins)
 Q: How do we use constraint propagation to solve the naked twins problem?  
-A: *Student should provide answer here*
+A: *
+		Following order of constraints were implemented for solving the naked twins problem:
+		1. Twins could only happen with unsolved two-digit elements in the grid. Following steps were carried out on each two-digit box found in the grid.
+		2. Row, column, square and diagonal (if applicable) units containing a two-digit element needed to be searched for existence of twins.
+		3. For a twin detected in above step, digits were removed from other unsolved elements in row, column, square and diagonal units.
+	*
 
 # Question 2 (Diagonal Sudoku)
 Q: How do we use constraint propagation to solve the diagonal sudoku problem?  
-A: *Student should provide answer here*
+A: *
+		Diagonal sudoku needed additional constraint of two diagonals having  numbers 1 through 9 exactly once. Following order of steps were followed:
+		1. In addition to row, column and square units, diagonal units were defined to apply the diagonal constraint.
+		2. Units and peers for each element in the grid were modified to include diagonal units for applying elemination, only_choice and naked_twin constrains.
+	*
 
 ### Install
 
