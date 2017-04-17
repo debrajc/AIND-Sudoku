@@ -17,13 +17,13 @@ def naked_twins(values):
 	"Find naked twins and replace twin digits from corresponding units"
 	"""
 	Eliminate values using the naked twins strategy.
-	Args:
-		values(dict): a dictionary of the form {'box_name': '123456789', ...}
-
-	Returns:
-		the values dictionary with the naked twins eliminated from peers.
+	Input: values(dict): a dictionary of the form {'box_name': '123456789', ...}
+	Output: the values dictionary with the naked twins eliminated from peers.
 	"""
+	# Make a list of boxes having two-digit element in values(dict)	
 	two_digit_boxes = [box for box in boxes if len(values[box]) == 2]
+	
+	# Iterate over two-digit boxes, and units containing each box. If exist remove twin digits from other boxes
 	for box in two_digit_boxes:
 		for unit in units[box]:
 			remove_twin_digits(box, unit, values)
@@ -33,17 +33,16 @@ def naked_twins(values):
 def remove_twin_digits(box, unit, values):
 	"""
 	Helper function to find twins in a unit and remove twin digits from the unit
-	Args:
-		a box address that has two digits, an unit containing the box, values(dict)
-
-	Returns:
-		values(dict) with the naked twins eliminated from a unit.
-		If no twin exist in the unit, it returns values(dict) without changes
-	"""
+	Input: a box address that has two digits, an unit containing the box, values(dict)
+	Output: values(dict) with the naked twins eliminated from a unit. If no twin exist, it returns grid without changes
+	"""	
+	# Find twin given a two-digit box, one of the units containing it, and the values(dict)
 	twin = []
 	for item in unit:
 		if (item != box) & (values[box] == values[item]):
-			twin =[box, item]
+			twin = [box, item]
+	
+	# If twin exist, iterate over twin digits, and boxes in given unit (excluding twin boxes), and remove the twin digits
 	if len(twin) != 0:
 		for digit in values[box]:
 			for u in unit:
